@@ -31,7 +31,11 @@ const VerifyCode = ({ email, setPage }) => {
     e.preventDefault()
     setSent(true)
     await fetch(`${process.env.NEXT_PUBLIC_SERVER}/api/auth/resend-password-code`, {
-      method: 'POST'
+      method: 'POST',
+      body: JSON.stringify({email}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
   }
 

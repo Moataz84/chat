@@ -16,7 +16,7 @@ const Verify = () => {
       </Head>
       {
         page === 'verify'?
-          <VerifyCode user={user.user} setPage={setPage} />
+          <VerifyCode user={user.user} setLoggedIn={user.setLoggedIn} setPage={setPage} />
         :
           <ChangeEmail user={user.user} setPage={setPage} />
       }

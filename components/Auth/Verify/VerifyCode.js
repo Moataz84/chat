@@ -4,7 +4,7 @@ import { BsArrowLeft } from 'react-icons/bs'
 import { TextInput } from '../Inputs'
 import styles from '../../../styles/auth.module.css'
 
-const VerifyCode = ({ user, setPage }) => {
+const VerifyCode = ({ user, setPage, setLoggedIn }) => {
 
   const router = useRouter()
   const [code, setCode] = useState('')
@@ -62,6 +62,15 @@ const VerifyCode = ({ user, setPage }) => {
     setLoading(false)
   }
 
+  const back = async e => {
+    e.preventDefault()
+    await fetch(`${process.env.NEXT_PUBLIC_SERVER}/api/auth/logout`, {
+      method: 'POST'
+    })
+    await router.push('/login')
+    await setLoggedIn(false)
+  }
+
   return (
     <div className={styles['form-container']}>
       <form className={styles['auth-form']}>
@@ -87,6 +96,7 @@ const VerifyCode = ({ user, setPage }) => {
           sent? <div className={styles.text}>Resend Code in {time}s</div>:
           <div className={styles.text} style={{cursor: 'pointer'}} onClick={resend}>Resend Code</div>
         }
+        <div className={styles.text} style={{cursor: 'pointer'}} onClick={back}>Back to Login</div>
         <button type='submit' onClick={submit}>Submit</button>
         <p className={styles.error}>{error}</p>
       </form>
