@@ -19,8 +19,8 @@ const handler = async (req, res) => {
       const verified = false
       const forgotPasswordCode = v4().toString().replace(/-/g, '')
       const profile = {
-        pictureUrl: 'https://ik.imagekit.io/pk4i4h8ea/chat-website/profile-pictures/no-profile_Jfensf-p1.jpg',
-        pictureId: '62d9851bda2224c770a4793e'
+        pictureUrl: 'https://ik.imagekit.io/pk4i4h8ea/chat-website/profile-pictures/no-profile.jpg',
+        pictureId: '658e7cbe88c257da3336d588'
       }
       const requests = []
       const requested = []
